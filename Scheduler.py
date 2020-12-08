@@ -74,7 +74,6 @@ class Scheduler:
             for idx,timeslot in enumerate(max_partition):
                 timeslot.calc_utility([[timeslot.max_class,timeslot.max_action]],bt=False)
                 timeslot.max_class.update(timeslot.max_action,False)
-                timeslot.update_pset(self.classList)
 
             max_schedule.append(max_partition)
         return max_schedule
