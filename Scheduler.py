@@ -1,4 +1,4 @@
-from My_Class import My_Class
+from Class import Class
 from TimeSlot import TimeSlot
 import copy
 import matplotlib.pyplot as plt
@@ -45,7 +45,8 @@ class Scheduler:
             self.work_schedule[time_slot.time // 24].append(time_slot)
 
     def add_class(self,class_data):
-        new_class = My_Class(class_data[0], self.parseHours(class_data[1]), self.parseHours(class_data[2]), class_data[3], self.parseHours(class_data[4]),class_data[5])
+        "adds class to classList"
+        new_class = Class(class_data[0], self.parseHours(class_data[1]), self.parseHours(class_data[2]), class_data[3], self.parseHours(class_data[4]),class_data[5])
         self.classList.append(new_class)
 
     def add_constraints(self,work_hour_intervals, work_hours_per_day):
@@ -74,11 +75,6 @@ class Scheduler:
                 timeslot.calc_utility([[timeslot.max_class,timeslot.max_action]],bt=False)
                 timeslot.max_class.update(timeslot.max_action,False)
                 timeslot.update_pset(self.classList)
-                # if idx != len(max_partition)-1:
-                #     timeslot.update_pset(self.classList,False)
-                # else:
-                #     timeslot.update_pset(self.classList,True)
-
 
             max_schedule.append(max_partition)
         return max_schedule
@@ -121,37 +117,5 @@ class Scheduler:
         day = ['Sun', 'M', 'Tu', 'W', 'Th', 'F', 'Sat'][time // 24] 
         hour = time % 24
         return "{}:{}".format(day,hour)
-
-    def class_plot(self):
-        C = self.classList[1]
-        x_val1 = [x[0] for x in C.E_pset]
-        y_val1 = [x[1] for x in C.E_pset]
-        x_val2 = [x[0] for x in C.W_pset]
-        y_val2 = [x[1] for x in C.W_pset]
-        plt.plot(x_val1,y_val1)
-        plt.plot(x_val2,y_val2)
-        plt.show()
-
-
-# Test Case 3
-class1 = ['PHYS16','MWF:12-13','TuWTh:15-18',6,'F:18',0.30]
-class2 = ['CS182','MWF:14-15','MW:15-19',8,'Th:18',0.15]
-class3 = ['GENED1023','TuTh:12-14','MW:12-13',2,'W:18',0.15]
-work_ = 'MTuWThFSatSun:12-20'
-
-S = Scheduler()
-S.add_class(class1)
-S.add_class(class2)
-S.add_class(class3)
-S.add_work_schedule(work_)
-S.add_constraints(1,5)
-F = S.back_tracking_search()
-S.print_final_schedule(F)
-# S.class_plot()
-
-
-# 
-# S.add_class(class3)
-
 
 
