@@ -1,4 +1,4 @@
-from My_Class import My_Class
+from Class import Class
 import numpy as np
 
 class TimeSlot:
