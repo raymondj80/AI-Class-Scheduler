@@ -42,7 +42,7 @@ class MScheduler:
         "adds work schedule to instance variable work_schedule"
         self.work_hours = self.parseHours(work_schedule)
         for work_hour in self.work_hours:
-            time_slot = TimeSlot(work_hour)
+            time_slot = MTimeSlot(work_hour)
             self.work_schedule.append(time_slot)
 
     def add_class(self,class_data):
