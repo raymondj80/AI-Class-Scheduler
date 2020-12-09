@@ -36,7 +36,7 @@ cd Approach2
 ## Running the tests
 
 Inputting class data and work schedule \
-class = [class_name,class_hours,office_hours,difficulty,hw_deadline,hw_weight]
+class = [class_name, class_hours, office_hours, difficulty, hw_deadline, hw_weight]
 
 ```
 class1 = ['PHYS16','MWF:12-13','TuWTh:15-18',6,'F:18',0.30]
