@@ -1,5 +1,3 @@
-"Written by Raymond Jow V2.0 2020"
-
 import numpy as np
 class MarkovClass:
     def __init__(self,class_name,class_times,oh_times,difficulty,pset_deadline,pset_weight):
@@ -32,7 +30,7 @@ class MarkovClass:
             if max_update < epsilon:
                 break
 
-    # returns the s' given s and a
+    # returns the s' given s and a                   
     def T(self,state,action):
         if action == 'class':
             return (min(10, state[0] + 1), min(10 * self.difficulty, state[1] + 8),state[2])

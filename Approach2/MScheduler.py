@@ -1,7 +1,6 @@
-"Written by Raymond Jow V2.0 2020"
-
 from MarkovClass import MarkovClass
 from MTimeSlot import MTimeSlot
+import matplotlib.pyplot as plt
 
 class MScheduler:
     def __init__(self):
@@ -71,6 +70,12 @@ class MScheduler:
             print("Time: {: <9} Class: {: <13} Action: {: <10} Utility: {: <10.2f} Work Done: {: <10.0%} Fatigue: {: <9} Proficiency: {: <10.0%}".format(time, best_class, best_action, utility, work_done, fatigue, proficiency))
 
     def timeToString(self,time):
-        day = ['Sun', 'M', 'Tu', 'W', 'Th', 'F', 'Sat'][time // 24]
+        day = ['Sun', 'M', 'Tu', 'W', 'Th', 'F', 'Sat'][time // 24] 
         hour = time % 24
         return "{}:{}".format(day,hour)
+
+
+
+
+
+

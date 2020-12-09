@@ -1,8 +1,6 @@
-"Written by Raymond Jow V1.0 2020"
-
 import numpy as np
+
 class Class:
-    OH = 0.5
     def __init__(self,class_name,class_times,oh_times,difficulty,pset_deadline,pset_weight):
         self.name = class_name
         self.deadline = pset_deadline[0]
@@ -12,7 +10,10 @@ class Class:
         self.oh_times = oh_times
         self.bt_time = np.array([0,0,0])
         self.time = np.array([0,0,0])
-
+        self.E_pset = []
+        self.W_pset = []
+        self.update_prev = 0
+        
     # set the time vector
     def update(self,action,bt=False):
         if bt:

@@ -1,9 +1,6 @@
-"Written by Raymond Jow V1.0 2020"
-
 from Class import Class
 from TimeSlot import TimeSlot
 import copy
-
 
 class Scheduler:
     def __init__(self):
@@ -47,7 +44,6 @@ class Scheduler:
             self.work_schedule[time_slot.time // 24].append(time_slot)
 
     def add_class(self,class_data):
-        "adds class to classList"
         new_class = Class(class_data[0], self.parseHours(class_data[1]), self.parseHours(class_data[2]), class_data[3], self.parseHours(class_data[4]),class_data[5])
         self.classList.append(new_class)
 
@@ -76,6 +72,7 @@ class Scheduler:
             for idx,timeslot in enumerate(max_partition):
                 timeslot.calc_utility([[timeslot.max_class,timeslot.max_action]],bt=False)
                 timeslot.max_class.update(timeslot.max_action,False)
+                timeslot.update_pset(self.classList)
 
             max_schedule.append(max_partition)
         return max_schedule
@@ -118,5 +115,24 @@ class Scheduler:
         day = ['Sun', 'M', 'Tu', 'W', 'Th', 'F', 'Sat'][time // 24] 
         hour = time % 24
         return "{}:{}".format(day,hour)
+
+# Test Case 3
+class1 = ['PHYS16','MWF:12-13','TuWTh:15-18',6,'F:18',0.30]
+class2 = ['CS182','MWF:14-15','MW:15-19',8,'Th:18',0.15]
+class3 = ['GENED1023','TuTh:12-14','MW:12-13',2,'W:18',0.15]
+work_ = 'MTuWThFSatSun:12-20'
+
+S = Scheduler()
+S.add_class(class1)
+S.add_class(class2)
+S.add_class(class3)
+S.add_work_schedule(work_)
+S.add_constraints(1,5)
+F = S.back_tracking_search()
+S.print_final_schedule(F)
+
+
+
+
 
 

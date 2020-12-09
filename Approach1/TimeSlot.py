@@ -1,5 +1,3 @@
-"Written by Raymond Jow V1.0 2020"
-
 from Class import Class
 import numpy as np
 
@@ -11,7 +9,6 @@ class TimeSlot:
         self.work_done = False
         self.utility = 0
 
-    #Returns all the valid actions available for a particular time
     def get_valid_actions(self,classList):
         Actions = []
         for Class in classList:
@@ -22,6 +19,11 @@ class TimeSlot:
             # Work is always a valid option
             Actions.append([Class,np.array([0,0,1])])
         return Actions
+
+    def update_pset(self,classList):
+        for C in classList:
+            C.E_pset.append((self.time,self.E_Pset(C.time,C.difficulty)))
+            C.W_pset.append((self.time,self.W_Pset(C.time)))
 
     #Calculates the maximum utility of the timeslot
     def calc_utility(self,valid_Actions,bt=False):
@@ -66,11 +68,11 @@ class TimeSlot:
         self.work_done = work_done
         return a_max
 
-    # Calculates the Expected Pset Time
-    def E_Pset(self,time,difficulty):
-        return difficulty * np.exp(-1.3 * time[0]/4) * np.exp(-0.9 * time[1]/4) + difficulty
+    # Calculates the Expected Pset Time given class difficulty
+    def E_Pset(self,time,D):
+        return D * np.exp(-1.3 * time[0]/4) * np.exp(-0.9 * time[1]/4) + D
     
-    # Calculates the Work Done 
+    # Calculates the Work 
     def W_Pset(self,time):
         return (1 + 0.2 * np.sqrt(time[0]/10) + 0.5 * np.sqrt(time[1]/5)) * time[2]
 
