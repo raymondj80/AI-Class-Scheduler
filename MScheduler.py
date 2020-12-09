@@ -2,7 +2,6 @@
 
 from MarkovClass import MarkovClass
 from MTimeSlot import MTimeSlot
-import matplotlib.pyplot as plt
 
 class MScheduler:
     def __init__(self):
