@@ -63,6 +63,14 @@ class2 = ['CS182','MWF:14-15','MW:15-19',8,'Th:18',0.15]
 class3 = ['GENED1023','TuTh:12-14','MW:12-13',2,'W:18',0.15]
 work_ = 'MTuWThFSatSun:12-20'
 ```
+
+Entering multiple class/office hour times:
+
+Example:
+Class Times: Monday,Wednesday,Friday (14-15) and Tuesday & Thursday (15-16)
+```
+class2 = ['CS182','MWF:14-15,TuTh:15-16','TuTh:18-19',4,'W:12',0.30]
+```
 Additionally, for the CSP Scheduler, you can change the constraints \
 The format for the constraints is the following: \
 add_constraints(break_hours_between_work, total_work_hours_per_day)
