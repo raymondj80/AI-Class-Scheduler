@@ -21,13 +21,13 @@ cd AI-Class-Scheduler
 
 ### Loading Schedulers
 
-For the CSP Model (Approach 1)
+For the CSP Scheduler (Approach 1)
 
 ```
 cd Approach1
 ```
 
-For the MDP Model (Approach 2)
+For the MDP Scheduler (Approach 2)
 
 ```
 cd Approach2
@@ -35,18 +35,40 @@ cd Approach2
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Inputting class data and work schedule
+class = [class_name,class_hours,office_hours,difficulty,hw_deadline,hw_weight]
 
 ```
-Give an example
+class1 = ['PHYS16','MWF:12-13','TuWTh:15-18',6,'F:18',0.30]
+class2 = ['CS182','MWF:14-15','MW:15-19',8,'Th:18',0.15]
+class3 = ['GENED1023','TuTh:12-14','MW:12-13',2,'W:18',0.15]
+work_ = 'MTuWThFSatSun:12-20'
 ```
 
-### And coding style tests
+### Running Scheduler 
+For the CSP Scheduler (Approach 1)
+```
+from Scheduler import Scheduler
+S = Scheduler()
+S.add_class(class1)
+S.add_class(class2)
+S.add_class(class3)
+S.add_work_schedule(work_)
+S.add_constraints(0,5)
+F = S.back_tracking_search()
+S.print_final_schedule(F)
+```
 
-Explain what these tests test and why
+For the MDP Scheduler (Approach 2)
+```
+from MScheduler import MScheduler
+MS = MScheduler()
+MS.add_class(class1)
+MS.add_class(class2)
+MS.add_class(class3)
+MS.add_work_schedule(work_)
+MS.maximize_utility()
+MS.print_final_schedule()
+```
 
       
