@@ -64,7 +64,7 @@ class3 = ['GENED1023','TuTh:12-14','MW:12-13',2,'W:18',0.15]
 work_ = 'MTuWThFSatSun:12-20'
 ```
 
-Entering multiple class/office hour times:
+Entering multiple class/office hour times at different hours:
 
 Example:
 Class Times: Monday,Wednesday,Friday (14-15) and Tuesday & Thursday (15-16)
