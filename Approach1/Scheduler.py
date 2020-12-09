@@ -3,14 +3,26 @@ from TimeSlot import TimeSlot
 import copy
 
 class Scheduler:
+    """
+    Scheduler that runs the CSP backtracking search algorithm
+    
+    Atrtributes
+    -----------
+    class: list
+        list of class objects
+    work_schedule: list of lists
+        list of TimeSlot lists representing each day of the week
+    constraints: 2-tuple
+        (work_hour_intervals, work_hours_per_day)
+    """
+    
     def __init__(self):
         self.classList = []
         self.work_schedule = [[] for i in range(7)]
         self.constraints = None
-        self.hours = [i for i in range(168)]
-        self.max_hours = []
 
     def parseHours(self,hours):
+        "parses a string schedule input into a time list"
         times_list = []
         times = hours.split(',')
         for t in times:
@@ -44,6 +56,7 @@ class Scheduler:
             self.work_schedule[time_slot.time // 24].append(time_slot)
 
     def add_class(self,class_data):
+        "adds Class object to classList"
         new_class = Class(class_data[0], self.parseHours(class_data[1]), self.parseHours(class_data[2]), class_data[3], self.parseHours(class_data[4]),class_data[5])
         self.classList.append(new_class)
 
@@ -72,7 +85,6 @@ class Scheduler:
             for idx,timeslot in enumerate(max_partition):
                 timeslot.calc_utility([[timeslot.max_class,timeslot.max_action]],bt=False)
                 timeslot.max_class.update(timeslot.max_action,False)
-                timeslot.update_pset(self.classList)
 
             max_schedule.append(max_partition)
         return max_schedule
@@ -112,6 +124,7 @@ class Scheduler:
         return ['class', 'OH', 'work'][list(action).index(1)] 
 
     def timeToString(self,time):
+        "Converts int time to string"
         day = ['Sun', 'M', 'Tu', 'W', 'Th', 'F', 'Sat'][time // 24] 
         hour = time % 24
         return "{}:{}".format(day,hour)

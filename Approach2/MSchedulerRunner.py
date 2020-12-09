@@ -1,5 +1,11 @@
 from MScheduler import MScheduler
 
+"""
+Python file that runs the Scheduler class
+-----------------------------------------
+Modify Class Data and Work Schedule
+"""
+
 # Modify Class Data and Work Schedule
 class1 = ['PHYS16','MWF:12-16','MWTh:13-18',6,'F:18',0.30]
 class2 = ['CS182','MWF:14-15','TuTh:12-15',4,'W:12',0.30]

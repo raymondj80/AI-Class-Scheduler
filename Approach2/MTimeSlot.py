@@ -2,14 +2,39 @@ from MarkovClass import MarkovClass
 import numpy as np
 
 class MTimeSlot:
+    """
+    Timeslot class that represents a 1 hour timeslot in the work schedule
+    
+    Atrtributes
+    -----------
+    time: int
+        time of TimeSlot class
+    max_action: np.array
+        best action chosen by calc_utility
+    max_class: Class object
+        Class of max_action
+    work_done: int
+        percent of work done
+    utility: float
+        max utility calculated by calc_utility
+    fatigue: int
+        fatigue level
+    proficiency: int
+        proficiency level
+    """
+
     def __init__(self,time):
         self.time = time
         self.max_action = None
         self.max_class = None
-        self.work_done = None
+        self.work_done = 0
         self.utility = 0
+        self.fatigue = 0
+        self.proficiency = 0
+
 
     def get_valid_actions(self,classList):
+        "Returns the possbile actions at the timeslot time"
         Actions = []
         for Class in classList:
             if Class.state[2] != 100:
@@ -22,8 +47,8 @@ class MTimeSlot:
             Actions.append([Class,'rest'])
         return Actions
 
-    #Calculates the maximum utility of the timeslot
     def calc_utility(self,valid_Actions):
+        "Calculates the maximum utility of the timeslot"
         V = None
         for a in valid_Actions:
             done = False
@@ -50,6 +75,7 @@ class MTimeSlot:
         self.work_done = self.max_class.T(self.max_class.state,self.max_action)[2]
 
     def updateState(self,classList):
+        "Updates the fatigue level of all Class.state in classList"
         for Class in classList:
             if Class == self.max_class:
                 Class.state = Class.T(Class.state,self.max_action)

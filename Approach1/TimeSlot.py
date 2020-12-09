@@ -2,6 +2,23 @@ from Class import Class
 import numpy as np
 
 class TimeSlot:
+    """
+    Timeslot class that represents a 1 hour timeslot in the work schedule
+    
+    Atrtributes
+    -----------
+    time: int
+        time of TimeSlot class
+    max_action: np.array
+        best action chosen by calc_utility
+    max_class: Class object
+        Class of max_action
+    work_done: bool
+        state of work done
+    utility: float
+        max utility calculated by calc_utility
+    """
+    
     def __init__(self,time):
         self.time = time
         self.max_action = None
@@ -10,6 +27,7 @@ class TimeSlot:
         self.utility = 0
 
     def get_valid_actions(self,classList):
+        "Returns the possbile actions at the timeslot time"
         Actions = []
         for Class in classList:
             if self.time in Class.class_times:
@@ -20,13 +38,8 @@ class TimeSlot:
             Actions.append([Class,np.array([0,0,1])])
         return Actions
 
-    def update_pset(self,classList):
-        for C in classList:
-            C.E_pset.append((self.time,self.E_Pset(C.time,C.difficulty)))
-            C.W_pset.append((self.time,self.W_Pset(C.time)))
-
-    #Calculates the maximum utility of the timeslot
     def calc_utility(self,valid_Actions,bt=False):
+        "Calculates the maximum utility of the timeslot"
         V = None
         work_done = False
         for action in valid_Actions:
@@ -60,6 +73,7 @@ class TimeSlot:
                 V = Q
                 a_max = t_action
 
+        # If currently backtrack searching, update max_class & max_action
         if bt:
             self.max_class = C_max
             self.max_action = a_max
@@ -68,12 +82,12 @@ class TimeSlot:
         self.work_done = work_done
         return a_max
 
-    # Calculates the Expected Pset Time given class difficulty
     def E_Pset(self,time,D):
+        "Calculates the Expected Pset Time"
         return D * np.exp(-1.3 * time[0]/4) * np.exp(-0.9 * time[1]/4) + D
     
-    # Calculates the Work 
     def W_Pset(self,time):
+        "Calculates the Work Done"
         return (1 + 0.2 * np.sqrt(time[0]/10) + 0.5 * np.sqrt(time[1]/5)) * time[2]
 
 

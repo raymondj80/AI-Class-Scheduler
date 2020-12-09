@@ -3,14 +3,23 @@ from MTimeSlot import MTimeSlot
 import matplotlib.pyplot as plt
 
 class MScheduler:
+    """
+    Markov Scheduler that runs the MDP Model
+
+    Atrtributes
+    -----------
+    class: list
+        list of class objects
+    work_schedule: list of MTimeSlot objects
+        list of MTimeSlots representing work schedule
+    """
+    
     def __init__(self):
         self.classList = []
         self.work_schedule = []
-        self.constraints = None
-        self.hours = [i for i in range(168)]
-        self.max_hours = []
 
     def parseHours(self,hours):
+        "parses a string schedule input into a time list"
         times_list = []
         times = hours.split(',')
         for t in times:
@@ -44,6 +53,7 @@ class MScheduler:
             self.work_schedule.append(time_slot)
 
     def add_class(self,class_data):
+        "adds MarkovClass Object to classList"
         new_class = MarkovClass(class_data[0], self.parseHours(class_data[1]), self.parseHours(class_data[2]), class_data[3], self.parseHours(class_data[4]),class_data[5])
         new_class.value_Iteration(0.9,0.1)
         self.classList.append(new_class)
@@ -70,6 +80,7 @@ class MScheduler:
             print("Time: {: <9} Class: {: <13} Action: {: <10} Utility: {: <10.2f} Work Done: {: <10.0%} Fatigue: {: <9} Proficiency: {: <10.0%}".format(time, best_class, best_action, utility, work_done, fatigue, proficiency))
 
     def timeToString(self,time):
+        "Converts int time to string"
         day = ['Sun', 'M', 'Tu', 'W', 'Th', 'F', 'Sat'][time // 24] 
         hour = time % 24
         return "{}:{}".format(day,hour)

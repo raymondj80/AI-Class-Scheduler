@@ -1,5 +1,28 @@
 import numpy as np
 class MarkovClass:
+    """
+    MarkovClass used to represent a class that the student is taking in the MDP Model
+    
+    Atrtributes
+    -----------
+    name: string
+        name of class
+    deadline: int
+        hour of deadline (0-168)
+    weight: float
+        weight of homework(0-1)
+    class_times: int array
+        list of class times
+    oh_times: int array
+        list of oh times
+    state: 3-tuple
+        (fatigue_level, proficiency_level, percent_work_done)
+    actions: 4-tuple
+        tuple of all possible actions
+    Q: np.array
+        array of utility values of all possible states in MDP Model
+    """
+    
     def __init__(self,class_name,class_times,oh_times,difficulty,pset_deadline,pset_weight):
         self.name = class_name
         self.deadline = pset_deadline[0]
@@ -11,8 +34,8 @@ class MarkovClass:
         self.actions = ('class','oh','work','rest')
         self.Q = np.zeros((11,10 * self.difficulty + 1,101))
         
-    # Create Q table for value iteration
     def value_Iteration(self,gamma,epsilon):
+        "Create Q table for value iteration"
         while True:
             max_update = 0
             old_V = np.copy(self.Q)
@@ -29,9 +52,9 @@ class MarkovClass:
  
             if max_update < epsilon:
                 break
-
-    # returns the s' given s and a                   
+              
     def T(self,state,action):
+        "returns the s' given s and a"
         if action == 'class':
             return (min(10, state[0] + 1), min(10 * self.difficulty, state[1] + 8),state[2])
         if action == 'oh':
@@ -41,8 +64,8 @@ class MarkovClass:
         if action == 'rest':
             return (max(0, state[0] - 2), state[1], state[2])
 
-    # return the reward given a state and action
     def R(self,state,action):
+        "returns the reward given s and a"
         if action == 'work':
             return min(100, state[2] + (state[1]/(10 * self.difficulty)) * ((9 - state[0])/10) * 150) - state[2]
         else:
