@@ -3,7 +3,7 @@
 from Class import Class
 from TimeSlot import TimeSlot
 import copy
-import matplotlib.pyplot as plt
+
 
 class Scheduler:
     def __init__(self):
