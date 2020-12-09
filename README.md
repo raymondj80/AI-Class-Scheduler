@@ -49,8 +49,8 @@ python MSchedulerRunnner.py
 
 Inside the SchedulerRunner.py files, you can modify the class data and work schedule \
 Inputting class data and work schedule \
-class = [class_name, class_hours, office_hours, difficulty, hw_deadline, hw_weight] \
-work_schedule = 'Days:StartHour-EndHour' \
+**class = [class_name, class_hours, office_hours, difficulty, hw_deadline, hw_weight]** \
+**work_schedule = 'Days:StartHour-EndHour'** \
 The Symbols for each day are as follows: \
 Monday:M, Tuesday:Tu, Wednesday:W, Thursday:Th, Friday:F, Saturday:Sat, Sunday:Sun
 
