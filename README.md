@@ -47,11 +47,11 @@ For the MDP Scheduler (Approach 2)
 python MSchedulerRunnner.py
 ```
 
-Inside the SchedulerRunner.py files, you can modify the class data and work schedule... \
+Inside the SchedulerRunner.py files, you can modify the class data and work schedule... 
 
 ### Modifying class data and work schedule 
-**class = [class_name, class_hours, office_hours, difficulty, hw_deadline, hw_weight]** \
-**work_schedule = 'Days:StartHour-EndHour'** \
+**class = [class_name, class_hours, office_hours, difficulty, hw_deadline, hw_weight]** 
+**work_schedule = 'Days:StartHour-EndHour'** 
 
 Monday:M, Tuesday:Tu, Wednesday:W, Thursday:Th, Friday:F, Saturday:Sat, Sunday:Sun
 
@@ -71,8 +71,8 @@ Class Times: Monday,Wednesday,Friday (14-15) and Tuesday & Thursday (15-16)
 ```
 class2 = ['CS182','MWF:14-15,TuTh:15-16','TuTh:18-19',4,'W:12',0.30]
 ```
-Additionally, for the CSP Scheduler, you can change the constraints \
-The format for the constraints is the following: \
+Additionally, for the CSP Scheduler, you can change the constraints 
+The format for the constraints is the following: 
 add_constraints(break_hours_between_work, total_work_hours_per_day)
 
 Example: 
