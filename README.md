@@ -35,7 +35,7 @@ cd Approach2
 
 ## Running the tests
 
-Inputting class data and work schedule
+Inputting class data and work schedule \\
 class = [class_name,class_hours,office_hours,difficulty,hw_deadline,hw_weight]
 
 ```
