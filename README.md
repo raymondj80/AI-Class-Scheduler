@@ -35,7 +35,7 @@ cd Approach2
 
 ## Running the tests
 
-There are SchedulerRunner.py files to run the Scheduler /
+There are SchedulerRunner.py files to run the Scheduler 
 
 For the CSP Scheduler (Approach 1)
 ```
