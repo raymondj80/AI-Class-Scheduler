@@ -1,3 +1,5 @@
+"Written by Raymond Jow V2.0 2020"
+
 from MarkovClass import MarkovClass
 import numpy as np
 

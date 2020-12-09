@@ -1,5 +1,6 @@
-import numpy as np
+"Written by Raymond Jow V1.0 2020"
 
+import numpy as np
 class Class:
     OH = 0.5
     def __init__(self,class_name,class_times,oh_times,difficulty,pset_deadline,pset_weight):

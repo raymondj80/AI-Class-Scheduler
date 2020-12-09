@@ -1,3 +1,5 @@
+"Written by Raymond Jow V2.0 2020"
+
 from MarkovClass import MarkovClass
 from MTimeSlot import MTimeSlot
 import matplotlib.pyplot as plt

@@ -1,3 +1,5 @@
+"Written by Raymond Jow V1.0 2020"
+
 from Class import Class
 import numpy as np
 
