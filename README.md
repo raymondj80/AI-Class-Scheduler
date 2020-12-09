@@ -71,4 +71,13 @@ MS.maximize_utility()
 MS.print_final_schedule()
 ```
 
+### Additionally there are SchedulerRunner.py files to run the scheduler
+```
+python SchedulerRunnner.py
+```
+
+```
+python MSchedulerRunnner.py
+```
+
       
