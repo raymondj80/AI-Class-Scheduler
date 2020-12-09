@@ -4,7 +4,7 @@ from MarkovClass import MarkovClass
 from MTimeSlot import MTimeSlot
 import matplotlib.pyplot as plt
 
-class Scheduler:
+class MScheduler:
     def __init__(self):
         self.classList = []
         self.work_schedule = []
