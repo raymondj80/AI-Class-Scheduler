@@ -44,7 +44,7 @@ python SchedulerRunnner.py
 
 For the MDP Scheduler (Approach 2)
 ```
-python MSchedulerRunnner.py
+python MSchedulerRunner.py
 ```
 
 Inside the SchedulerRunner.py files, you can modify the class data and work schedule... 
