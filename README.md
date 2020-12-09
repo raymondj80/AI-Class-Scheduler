@@ -67,7 +67,8 @@ The format for the constraints is the following: \
 add_constraints(break_hours_between_work, total_work_hours_per_day)
 
 Example:
-1 hours break_hours_between_work, 5 total_work_hours_per_day
+1 hours \
+break_hours_between_work, 5 total_work_hours_per_day \
 ```
 S.add_constraints(1,5)
 ```
