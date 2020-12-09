@@ -66,7 +66,7 @@ Additionally, for the CSP Scheduler, you can change the constraints \
 The format for the constraints is the following: \
 add_constraints(break_hours_between_work, total_work_hours_per_day)
 
-Example: \
+Example: 
 
 1 break_hours_between_work, 5 total_work_hours_per_day 
 ```
