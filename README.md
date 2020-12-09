@@ -19,13 +19,19 @@ git clone https://github.com/raymondj80/AI-Class-Scheduler.git
 cd AI-Class-Scheduler
 ```
 
-And repeat
+### Loading Schedulers
+
+For the CSP Model (Approach 1)
 
 ```
-until finished
+cd Approach1
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+For the MDP Model (Approach 2)
+
+```
+cd Approach2
+```
 
 ## Running the tests
 
